@@ -75,7 +75,7 @@ def cli(
     )
 
 
-@click.command("add-proxy-to-enviroment")
+@cli.command("add-proxy-to-enviroment")
 @click_add_options(click_global_options)
 @click.pass_context
 def _add_proxy_to_enviroment(
@@ -94,6 +94,6 @@ def _add_proxy_to_enviroment(
     add_proxy_to_enviroment()
 
 
-if __name__ == "__main__":
-    # pylint: disable=E1120
-    cli()
+# if __name__ == "__main__":
+#    # pylint: disable=E1120
+#    cli()
