@@ -29,6 +29,7 @@ from signal import signal
 
 import click
 import sh
+from asserttool import ic
 from click_auto_help import AHGroup
 from clicktool import click_add_options
 from clicktool import click_global_options
@@ -48,7 +49,7 @@ def add_proxy_to_enviroment():
             line = "".join(line.split('"'))
             line = "".join(line.split("#"))
             if line:
-                # ic(line)
+                ic(line)
                 key = line.split("=")[0]
                 value = line.split("=")[1]
                 os.environ[key] = value
