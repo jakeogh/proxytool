@@ -57,10 +57,8 @@ def construct_proxy_dict(
         scheme = line.split("=")[0].split("_")[0]
         line = line.split("=")[-1]
         line = line.strip('"')
-        # scheme = line.split('://')[0]
         ic(scheme)
         proxy_dict[scheme] = line
-        # proxy = line.split('://')[-1].split('"')[0]
     ic(proxy_dict)
     return proxy_dict
 
