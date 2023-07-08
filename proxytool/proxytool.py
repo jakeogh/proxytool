@@ -34,6 +34,7 @@ from click_auto_help import AHGroup
 from clicktool import click_add_options
 from clicktool import click_global_options
 from clicktool import tv
+from globalverbose import gvd
 from pathtool import read_file_bytes
 
 signal(SIGPIPE, SIG_DFL)
@@ -93,6 +94,13 @@ def cli(
         verbose=verbose,
         verbose_inf=verbose_inf,
     )
+    if not verbose:
+        ic.disable()
+    else:
+        ic.enable()
+
+    if verbose_inf:
+        gvd.enable()
 
 
 @cli.command("add-proxy-to-enviroment")
@@ -109,5 +117,12 @@ def _add_proxy_to_enviroment(
         verbose=verbose,
         verbose_inf=verbose_inf,
     )
+    if not verbose:
+        ic.disable()
+    else:
+        ic.enable()
+
+    if verbose_inf:
+        gvd.enable()
 
     add_proxy_to_enviroment()
