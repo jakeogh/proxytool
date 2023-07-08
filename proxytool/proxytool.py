@@ -28,16 +28,40 @@ from signal import SIGPIPE
 from signal import signal
 
 import click
-import sh
 from asserttool import ic
+from asserttool import icp
 from click_auto_help import AHGroup
 from clicktool import click_add_options
 from clicktool import click_global_options
 from clicktool import tv
-
-sh.mv = None  # use sh.busybox('mv'), coreutils ignores stdin read errors
+from pathtool import read_file_bytes
 
 signal(SIGPIPE, SIG_DFL)
+
+
+def construct_proxy_dict(
+    verbose: bool | int | float = False,
+):
+    try:
+        proxy_config = (
+            read_file_bytes("/etc/portage/proxy.conf").decode("utf8").split("\n")
+        )
+    except FileNotFoundError as e:
+        icp(e)
+        return {}
+    ic(proxy_config)
+    proxy_dict = {}
+    for line in proxy_config:
+        ic(line)
+        scheme = line.split("=")[0].split("_")[0]
+        line = line.split("=")[-1]
+        line = line.strip('"')
+        # scheme = line.split('://')[0]
+        ic(scheme)
+        proxy_dict[scheme] = line
+        # proxy = line.split('://')[-1].split('"')[0]
+    ic(proxy_dict)
+    return proxy_dict
 
 
 def add_proxy_to_enviroment():
