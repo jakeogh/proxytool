@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "proxytool"
-version = "1!0.0.1792814296"
+version = "1!0.0.1795217351"
 description = "common proxy functions"
 authors = [
     { name = "Justin Keogh", email = "github.com@v6y.net" },
@@ -12,7 +12,7 @@ authors = [
 dependencies = [
     "click",
     "asserttool @ git+https://github.com/jakeogh/asserttool@4bd23a06c2161e488415acde89c29537e6720cc1",
-    "click-auto-help @ git+https://github.com/jakeogh/click-auto-help@9745b515e7beaaa046f802b5b3ad516720fc2475",
+    "click-auto-help @ git+https://github.com/jakeogh/click-auto-help@3bddf633cb62ada70968ac16aea5a6c484e6459b",
     "clicktool @ git+https://github.com/jakeogh/clicktool@fe263331c27a4b392ce04261d83267759098d6b7",
 ]
 license = "ISC"
